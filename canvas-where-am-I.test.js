@@ -146,6 +146,12 @@ describe('Test the "Canvas Where Am I" most relevant theme integration items.', 
     await expect(parseInt(courseId)).toBe(courseObject.id);
   });
 
+  it('General: Check the alternative way to get the COURSE_ID from the url.', async () => {
+    await page.goto(`${host}/courses/${courseObject.id}/modules`);
+    const courseId  = page.url().split('courses/')[1];
+    await expect(parseInt(courseId)).toBe(courseObject.id);
+  });
+
   it('General: Check the DOMAIN_ROOT_ACCOUNT_ID is in the ENV variable.', async () => {
     await page.goto(`${host}/courses/${courseObject.id}/modules`);
     const domainAccountId = await page.evaluate(() => {
@@ -183,6 +189,12 @@ describe('Test the "Canvas Where Am I" most relevant theme integration items.', 
   it('Tile View: Check course_home_content DIV exists.', async () => {
     await page.goto(`${host}/courses/${courseObject.id}`);
     const element = await page.$('#course_home_content');
+    await expect(element).not.toBeNull();
+  });
+
+  it('Tile View: Check content DIV exists.', async () => {
+    await page.goto(`${host}/courses/${courseObject.id}`);
+    const element = await page.$('#content');
     await expect(element).not.toBeNull();
   });
 
