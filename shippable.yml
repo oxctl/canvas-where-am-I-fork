@@ -53,3 +53,9 @@ jobs:
       - canvas-where-am-I
     steps:
       - IN: canvas-cpn-weekly-trigger
+      - TASK:
+          name: Test the deployed CPN script in beta and production environments
+          script:
+            - npm install
+            # This performs tests against the deployed versions of the script, in beta and production.
+            - npm run test-deployed
