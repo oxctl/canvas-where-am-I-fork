@@ -18,7 +18,11 @@ const host = process.env.CANVAS_HOST;
 const account = process.env.ACCOUNT_ID;
 const amazonBucketUrl = process.env.AMAZON_S3_BUCKET_URL;
 
-describe('Test the "Canvas Where Am I" most relevant theme integration items.', () => {
+getRandomModule = () => {
+  return moduleArray[Math.floor(Math.random() * moduleArray.length)];
+}
+
+describe('Test the CPN most relevant DOM elements, functions, Canvas API and Amazon S3 Bucket.', () => {
 
   beforeAll(async () => {
     assert(token, 'You must set the environmental variable OAUTH_TOKEN');
@@ -125,7 +129,6 @@ describe('Test the "Canvas Where Am I" most relevant theme integration items.', 
     const moduleItemElements = await page.$$('.context_module');
     // We add one because Canvas also returns an extra blank module with id context_module_blank
     await expect(moduleItemElements.length).toBe(moduleArray.length + 1);
-
   });
 
   it('General: Check one module item is created and navigable.', async () => {
@@ -204,12 +207,6 @@ describe('Test the "Canvas Where Am I" most relevant theme integration items.', 
     await expect(element).not.toBeNull();
   });
 
-  it('Modules submenu: Check modules tool menu item exists.', async () => {
-    await page.goto(`${host}/courses/${courseObject.id}`);
-    const element = await page.$$('li.section a.modules');
-    await expect(element).not.toBeNull();
-  });
-
   it('Progress bar: Check module item footer exists, for the progress bar.', async () => {
     await page.goto(`${host}/courses/${courseObject.id}/modules/items/${moduleItems[0].id}`);
     const element = await page.$('#sequence_footer');
@@ -229,19 +226,21 @@ describe('Test the "Canvas Where Am I" most relevant theme integration items.', 
   });
 
   it('Modules list: Check the data-module-id attribute exists.', async () => {
+    const randomModule = getRandomModule();
     await page.goto(`${host}/courses/${courseObject.id}/modules`);
     const modules = await page.$$('div.context_module');
     // We add one because Canvas also returns an extra blank module with id context_module_blank
     await expect(modules.length).toBe(moduleArray.length + 1);
-    const itemsToRemove = await page.$$(`div.context_module:not([data-module-id='${moduleArray[0].id}'])`);
+    const itemsToRemove = await page.$$(`div.context_module:not([data-module-id='${randomModule.id}'])`);
     // Check that we get all the items except the first one, we leave the expresson + 1 - 1 for clarity.
     // We add one because Canvas also returns an extra blank module with id context_module_blank
     await expect(itemsToRemove.length).toBe(moduleArray.length + 1 - 1);
   });
 
   it('Modules list: Check the method to get the moduleId from the hash.', async () => {
-    await page.goto(`${host}/courses/${courseObject.id}/modules/${moduleArray[0].id}`);
-    await expect(page.url()).toBe(`${host}/courses/${courseObject.id}/modules#module_${moduleArray[0].id}`);
+    const randomModule = getRandomModule();
+    await page.goto(`${host}/courses/${courseObject.id}/modules/${randomModule.id}`);
+    await expect(page.url()).toBe(`${host}/courses/${courseObject.id}/modules#module_${randomModule.id}`);
   });
 
 });
