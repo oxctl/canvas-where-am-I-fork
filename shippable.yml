@@ -51,6 +51,8 @@ jobs:
     type: runCI
     flags:
       - canvas-where-am-I
+  - name: canvas-where-am-I-weekly_runCI
+    type: runSh
     steps:
       - IN: canvas-cpn-weekly-trigger
       - TASK:
