@@ -47,10 +47,6 @@ resources:
       interval: "0 * * * *" # This is for testing purposes, test the automatic build every hour.
 
 jobs:
-  - name: canvas-where-am-I_runCI
-    type: runCI
-    flags:
-      - canvas-where-am-I
   - name: canvas-where-am-I-weekly_runCI
     type: runSh
     steps:
