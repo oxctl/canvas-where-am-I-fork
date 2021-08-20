@@ -198,7 +198,7 @@ li.ou-progress-item a.active:hover {
 
 .ou-ModuleCard__header_content {
   box-sizing: border-box;
-  padding: 0px 18px 0px 18px;
+  padding: 0 10px 0 10px;
   background: #fff;
   text-align: left;
 }
@@ -208,7 +208,7 @@ li.ou-progress-item a.active:hover {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   padding: 18px 0px 18px 0px;
-  margin: 0 35px 0 0;
+  margin: 0 0 0 0;
   line-height: 1.3;
   /* for full color tile */
   font-size: 14px;
