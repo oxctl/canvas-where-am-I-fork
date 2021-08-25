@@ -10,7 +10,7 @@
     // The production bucket
     // amazonS3bucketUrl = 'https://oxctl-cpn-config-prod.s3-eu-west-1.amazonaws.com'
     // The development bucket
-    // amazonS3bucketUrl = 'https://oxctl-modules-dev.s3-eu-west-1.amazonaws.com'
+    amazonS3bucketUrl = 'https://oxctl-modules-dev.s3-eu-west-1.amazonaws.com'
 
     /****************************************/
     /**** End of Configuration Section ****/
