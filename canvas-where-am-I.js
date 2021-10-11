@@ -215,18 +215,11 @@
       /* Colours for Module tiles mostly randomly selected from: https://www.ox.ac.uk/public-affairs/style-guide/digital-style-guide */
       /* Some color are not accessible and replaced by variants using this service: https://accessible-colors.com/*/
       const moduleColours = [
-        '#873597','#872434','#721627','#043946',
-        '#595959','#B10E31','#275D86','#333333',
-        '#09332b','#365E6C','#365D74','#8E4402',
-        '#330d14','#3D5D70','#00152e','#595D00',
-        '#63583E','#5F584F','#814C1E','#0B5F86',
-        '#353c47','#000000','#005E8F','#5D594C',
-        '#3B5C77','#1C5E86','#466127','#9B3547',
-        '#001c3d','#0D6454','#A82824','#914200',
-        '#5E5854','#002147','#615751','#6D5606',
-        '#A13223','#7a736e','#003947','#193658',
-        '#122f53','#635746','#13635E','#AC2121',
-        '#275C87'
+          '#d62a2a', '#001c3d','#006599','#ac48bf',
+          '#c7302b','#5D8134','#AC6528','#0E7EB2',
+          '#C34F64','#44687d','#4E7B9F','#BD5B03',
+          '#767C00','#be0f34','#81746C','#177770',
+          '#917308','#D24633','#487E90','#872434'
       ];
 
       // Create our nav container
