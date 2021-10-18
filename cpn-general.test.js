@@ -25,6 +25,7 @@ getRandomModule = () => {
 describe('Test the CPN most relevant DOM elements, functions, Canvas API and Amazon S3 Bucket.', () => {
 
   beforeAll(async () => {
+    console.log('asserting environment variables have been set');
     assert(token, 'You must set the environmental variable OAUTH_TOKEN');
     assert(host, 'You must set the environmental variable CANVAS_HOST');
     assert(account, 'You must set the environmental variable ACCOUNT_ID');
@@ -39,8 +40,9 @@ describe('Test the CPN most relevant DOM elements, functions, Canvas API and Ama
       data: course
     }).then((response) => {
       courseObject = response.data;
+      console.log('course created');
     }).catch(err => {
-      console.error('error getting course data: ', err);
+      console.log('error creating course: ', err);
       throw err;
     });
 
