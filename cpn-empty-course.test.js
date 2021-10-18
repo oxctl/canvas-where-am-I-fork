@@ -45,6 +45,9 @@ describe('Test the CPN script logic with an empty course.', () => {
       data: course
     }).then((response) => {
       courseObject = response.data;
+    }).catch(err => {
+      console.error('error getting course data: ', err);
+      throw err;
     });
 
   });

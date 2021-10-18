@@ -57,6 +57,9 @@ describe('Test the CPN script against a course with some modules and items.', ()
       data: course
     }).then((response) => {
       courseObject = response.data;
+    }).catch(err => {
+      console.error('error getting course data: ', err);
+      throw err;
     });
 
     // Create some modules for the specific course

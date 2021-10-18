@@ -39,6 +39,9 @@ describe('Test the CPN most relevant DOM elements, functions, Canvas API and Ama
       data: course
     }).then((response) => {
       courseObject = response.data;
+    }).catch(err => {
+      console.error('error getting course data: ', err);
+      throw err;
     });
 
     // Create some modules for the specific course
