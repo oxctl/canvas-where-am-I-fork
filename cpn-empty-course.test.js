@@ -32,7 +32,6 @@ appendCPNScript = async (page) => {
 describe('Test the CPN script logic with an empty course.', () => {
 
   beforeAll(async () => {
-    console.log('asserting environment variables have been set');
     assert(token, 'You must set the environmental variable OAUTH_TOKEN');
     assert(host, 'You must set the environmental variable CANVAS_HOST');
     assert(account, 'You must set the environmental variable ACCOUNT_ID');

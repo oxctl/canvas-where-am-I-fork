@@ -25,7 +25,6 @@ getRandomModule = () => {
 describe('Test the CPN most relevant DOM elements, functions, Canvas API and Amazon S3 Bucket.', () => {
 
   beforeAll(async () => {
-    console.log('asserting environment variables have been set');
     assert(token, 'You must set the environmental variable OAUTH_TOKEN');
     assert(host, 'You must set the environmental variable CANVAS_HOST');
     assert(account, 'You must set the environmental variable ACCOUNT_ID');
@@ -58,6 +57,10 @@ describe('Test the CPN most relevant DOM elements, functions, Canvas API and Ama
           headers: {'Authorization': 'Bearer ' + token}
         }).then((response) => {
           moduleArray.push(response.data);
+          console.log(`created module ${i}`);
+        }).catch(err => {
+          console.log(`error creating module ${i}: `, err);
+          throw err;
         })
       );
     }
@@ -76,6 +79,10 @@ describe('Test the CPN most relevant DOM elements, functions, Canvas API and Ama
       data: newAssignment
     }).then((response) => {
       assignment = response.data;
+      console.log('assignment item created');
+    }).catch(err => {
+      console.log('error creating assignment item: ', err);
+      throw err;
     });
 
     const newAssignmentItem = { module_item: { title: newAssignment.name, type: 'assignment', content_id: assignment.id } };
@@ -86,6 +93,10 @@ describe('Test the CPN most relevant DOM elements, functions, Canvas API and Ama
       data: newAssignmentItem
     }).then((response) => {
       moduleItems.push(response.data);
+      console.log('created new assignment item')
+    }).catch(err => {
+      console.log('error creating new assignment item: ', err);
+      throw err;
     });
 
     const newUrlItem = { module_item: { title: 'Test module item', type: 'ExternalUrl', external_url: 'https://www.ox.ac.uk' } };
@@ -96,6 +107,10 @@ describe('Test the CPN most relevant DOM elements, functions, Canvas API and Ama
       data: newUrlItem
     }).then((response) => {
       moduleItems.push(response.data);
+      console.log('created new url item');
+    }).catch(err => {
+      console.log('error creating new url item: ', err);
+      throw err;
     });
 
   });
@@ -107,6 +122,11 @@ describe('Test the CPN most relevant DOM elements, functions, Canvas API and Ama
       url: `${host}/api/v1/courses/${courseObject.id}`,
       headers: {'Authorization': 'Bearer ' + token},
       data: { event: 'delete' }
+    }).then(() => {
+      console.log('deleted course');
+    }).catch(err => {
+      console.log('error deleting course: ', err);
+      throw err;
     })
   });
 
@@ -117,7 +137,11 @@ describe('Test the CPN most relevant DOM elements, functions, Canvas API and Ama
       page.waitForNavigation(),
       axios.get(`${host}/login/session_token`, {headers: {'Authorization': 'Bearer ' + token}})
       .then((response) => {
+        console.log('logged in');
         return page.goto(response.data.session_url);
+      }).catch(err => {
+        console.log('error logging in: ', err);
+        throw err;
       })
     ]);
   });
