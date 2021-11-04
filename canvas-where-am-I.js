@@ -4,13 +4,20 @@
     /**** Start of Configuration Section ****/
     /****************************************/
 
-    let amazonS3bucketUrl = '';
     /* Amazon S3 bucket URL, this URL is needed to retrieve the course presentation and navigation settings */
-    // amazonS3bucketUrl = 'https://oxctl-cpn-config-dev.s3-eu-west-1.amazonaws.com'
-    // The production bucket
-    // amazonS3bucketUrl = 'https://oxctl-cpn-config-prod.s3-eu-west-1.amazonaws.com'
-    // The development bucket
-    amazonS3bucketUrl = 'https://oxctl-modules-dev.s3-eu-west-1.amazonaws.com'
+    let amazonS3bucketUrl = '';
+    switch(window.origin) {
+        case 'https://universityofoxford.instructure.com':
+        case 'https://canvas.ox.ac.uk':
+            // The production bucket
+            amazonS3bucketUrl = 'https://oxctl-cpn-config-prod.s3-eu-west-1.amazonaws.com'
+            break
+        case 'https://universityofoxford.test.instructure.com':
+        case 'https://universityofoxford.beta.instructure.com':
+            // The development bucket
+            amazonS3bucketUrl = 'https://oxctl-cpn-config-dev.s3-eu-west-1.amazonaws.com'
+            break
+    }
 
     /****************************************/
     /**** End of Configuration Section ****/
