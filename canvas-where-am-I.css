@@ -186,6 +186,11 @@ li.ou-progress-item a.active:hover {
   margin: 18px auto 18px auto;
 }
 
+.ou-ModuleCard:focus-within {
+  outline: 3px solid blue;
+  outline-offset: 1px;
+}
+
 .ou-ModuleCard__header_hero_short {
   box-sizing: border-box;
   height: 100px;
