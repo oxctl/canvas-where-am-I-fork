@@ -252,12 +252,6 @@
 
         let moduleTileLink = document.createElement('a');
         moduleTileLink.href = `/courses/${courseId}/modules/${module.id}`;
-        moduleTileLink.addEventListener("focus", function () {
-          moduleTile.classList.add('ou-ModuleCard-focussed');
-        });
-        moduleTileLink.addEventListener("blur", function () {
-          moduleTile.classList.remove('ou-ModuleCard-focussed');
-        });
 
         const colorIndex = mindex % moduleColours.length;
         let moduleTileHeader = document.createElement('div');
