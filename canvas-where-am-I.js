@@ -230,13 +230,17 @@
       moduleNavAnchorLink.id = 'module_nav_anchor';
       moduleNav.appendChild(moduleNavAnchorLink);
 
+      const ul = document.createElement('ul');
+      ul.className = 'unstyled-list';
+      moduleNav.appendChild(ul);
+
       let newRow;
       moduleArray.forEach((module, mindex) => {
         //create row for card
         if (mindex % noOfColumnsPerRow === 0) {
             newRow = document.createElement('div');
             newRow.className = 'grid-row center-sm';
-            moduleNav.appendChild(newRow);
+            ul.appendChild(newRow);
         }
 
         var newColumn = document.createElement('div');
@@ -244,6 +248,8 @@
         // create column wrapper
         newColumn.className = 'col-xs-12 col-sm-6 col-lg-3';
         newRow.appendChild(newColumn);
+
+        let li = document.createElement('li');
 
         //create module div
         let moduleTile = document.createElement('div');
@@ -275,7 +281,8 @@
         moduleTileLink.appendChild(moduleTileHeader);
         moduleTileLink.appendChild(moduleTileContent);
         moduleTile.appendChild(moduleTileLink);
-        newColumn.appendChild(moduleTile);
+        li.appendChild(moduleTile);
+        newColumn.appendChild(li);
 
       });
 
