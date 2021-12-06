@@ -236,6 +236,7 @@
         if (mindex % noOfColumnsPerRow === 0) {
             newRow = document.createElement('div');
             newRow.className = 'grid-row center-sm';
+            moduleNav.appendChild(newRow);
         }
 
         var newColumn = document.createElement('div');
@@ -274,6 +275,7 @@
         moduleTileLink.appendChild(moduleTileHeader);
         moduleTileLink.appendChild(moduleTileContent);
         moduleTile.appendChild(moduleTileLink);
+        newColumn.appendChild(moduleTile);
 
       });
 

@@ -294,9 +294,3 @@ li.ou-menu-item-wrapper a {
 /********************************************************************************
  * End of Canvas Theme Overrides
 *********************************************************************************/
-
-.unstyled-list {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-}
