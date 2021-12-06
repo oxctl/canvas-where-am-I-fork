@@ -7,7 +7,8 @@
     "test": "jest cpn-general.test.js cpn-current-script.test.js cpn-empty-course.test.js",
     "test-deployed": "jest cpn-deployed-script.test.js",
     "start": "http-server -p 3001 -S -C localhost.pem -K localhost-key.pem",
-    "minify": "minify canvas-where-am-I.js --out-file canvas-where-am-I.min.js --mangle.keepClassName && cleancss -o canvas-where-am-I.min.css canvas-where-am-I.css"
+    "minify": "minify canvas-where-am-I.js --out-file canvas-where-am-I.min.js --mangle.keepClassName && cleancss -o canvas-where-am-I.min.css canvas-where-am-I.css",
+    "minify-prod": "mkdirp minified && minify important.js --out-file minified/important.min.js --mangle.keepClassName && cleancss -o minified/important.min.css important.css"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "http-server": "^13.0.1",
     "jest": "^27.0.6",
     "jest-puppeteer": "^5.0.4",
+    "mkdirp": "^1.0.4",
     "puppeteer": "^5.3.1"
   },
   "jest": {

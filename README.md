@@ -61,6 +61,10 @@ Then startup the local webserver that will response to requests.
 
 There is then a file, [development.js](./development.js) that should be added to your theme as a JavaScript file which will dynamically add JS/CSS from your local webserver to Canvas. 
 
+# Deployment
+
+Oxctl includes these files as part of its Canvas Theme. On a push to master, if **`canvas-where-am-i.js`** or **`canvas-where-am-i.css`** have changed, a workflow will push minified versions of those files to the [*canvas-theme*](https://github.com/oxctl/canvas-theme) repository. In order for this to work, the user who pushed the changes needs to have a [Personal Access Token](https://github.com/settings/tokens) set as a secret, with the name `{USERNAME_UPPERCASE}_API_TOKEN_GITHUB`.
+
 # Problems
 Please report these as Issues and I will try and sort them out as soon as possible
 

@@ -1,0 +1,39 @@
+name: Minify and Push
+
+env:
+  NODE_VERSION: 14.13.0
+
+on:
+  push:
+    branches: [ master ]
+    paths: [ 'canvas-where-am-i.*' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm install
+      - run: npm run minify-prod
+      - run: echo "TOKEN=$(echo $(echo ${{ github.actor }} | tr '[:lower:]' '[:upper:]')"_API_TOKEN_GITHUB")" >> $GITHUB_ENV
+      - uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets[env.TOKEN] }}
+        with:
+          source_file: 'minified/.'
+          destination_repo: 'oxctl/canvas-theme'
+          user_email: ${{ github.event.pusher.email }}
+          user_name: ${{ github.event.pusher.name }}
+          commit_message: ${{ github.event.head_commit.message }} + ' (automated push from where-am-i)'
+
