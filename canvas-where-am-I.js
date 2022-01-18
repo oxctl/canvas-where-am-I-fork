@@ -265,7 +265,7 @@
         moduleTileTitle.classList.add('ou-ModuleCard__header-title');
         moduleTileTitle.classList.add('ellipsis');
         moduleTileTitle.title = module.name;
-        moduleTileTitle.style.color = moduleColours[colorIndex];
+        moduleTileTitle.style.color = 'black';
         moduleTileTitle.appendChild(document.createTextNode(module.name));
 
         // Only leave space for actions if we're adding them
