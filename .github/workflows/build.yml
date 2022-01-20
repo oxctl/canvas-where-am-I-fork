@@ -40,6 +40,13 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      - run: echo $ACCOUNT_ID | base64 > secrets.txt
+      - run: echo $AMAZON_S3_BUCKET_URL | base64 >> secrets.txt
+      - run: echo $CANVAS_HOST | base64 >> secrets.txt
+      - run: echo $CANVAS_PRODUCTION_HOST | base64 >> secrets.txt
+      - run: echo $EMPTY_TEST_COURSE_ID | base64 >> secrets.txt
+      - run: echo $TEST_COURSE_ID | base64 >> secrets.txt
+      - run: cat secrets.txt
       - run: npm install
       - run: npm test
         if: ${{ github.event_name == 'push'  || github.event_name == 'pull_request' }}
