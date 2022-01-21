@@ -2,6 +2,12 @@
 
 [![Run Status](https://api.shippable.com/projects/5f50e5d29e6933000910473e/badge?branch=master)]()
 
+## Archived
+
+This repository can now be found here https://github.com/oxctl/canvas-where-am-I
+
+___
+
 Theme .js and .css to add within course navigation to Instructure Canvas *on the web*. Because the Canvas student app does not support ajax calls, it will not work on the student app. Does the following:
 
 ## Add Modules sub-menu
